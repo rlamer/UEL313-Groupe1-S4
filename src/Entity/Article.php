@@ -18,6 +18,9 @@ class Article
     private ?string $titre = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    private ?string $link = null;
+
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $texte = null;
 
     public function getId(): ?int
@@ -33,6 +36,18 @@ class Article
     public function setTitre(string $titre): static
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(string $link): static
+    {
+        $this->link = $link;
 
         return $this;
     }

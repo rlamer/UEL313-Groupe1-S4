@@ -3,9 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Keyword;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ArticleType extends AbstractType
 {
@@ -13,6 +16,7 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('titre')
+            ->add('link')
             ->add('texte')
         ;
     }
@@ -24,3 +28,5 @@ class ArticleType extends AbstractType
         ]);
     }
 }
+
+

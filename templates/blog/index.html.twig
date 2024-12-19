@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}Blog{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,39 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Watson✅</h1>
+        <h1>Connexion à ajouter</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/romaz/Documents/Ecole et cours/3- DEUST Webmaster/Troisième Année - Licence Pro/UE L313/Symfony test (nom provisoire)/mon_nouveau_projet/src/Controller/BlogController.php</code></li>
-        <li>Your template at <code>C:/Users/romaz/Documents/Ecole et cours/3- DEUST Webmaster/Troisième Année - Licence Pro/UE L313/Symfony test (nom provisoire)/mon_nouveau_projet/templates/blog/index.html.twig</code></li>
-    </ul>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Lien</th>
+                <th>Texte</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.titre }}</td>
+                <td>
+                    <a href="{{ article.link }}" target="_blank">{{ article.link }}</a>
+                </td>
+                <td>{{ article.texte }}</td>
+                <td>
+                    <a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn-primary btn-sm">Voir</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
